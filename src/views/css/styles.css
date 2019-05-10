@@ -48,10 +48,12 @@ p {
 
 button, input {
 	display: block;
+	padding: 15px;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 button {
-	padding: 14px;
 	font-size: 16.00px;
 	color: #D4D7E7;
 	background-color: #5965A1;
