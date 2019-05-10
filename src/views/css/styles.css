@@ -5,6 +5,11 @@ body {
 	background-color: #121521;
 }
 
+.container {
+	max-width: 700px;
+	margin: 0 auto;
+}
+
 .box {
 	background-color: #2A2F4C
 }
