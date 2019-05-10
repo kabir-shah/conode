@@ -1,0 +1,20 @@
+{
+  "name": "conode",
+  "version": "1.0.0",
+  "description": "Collaborative project-based learning tool for programming.",
+  "scripts": {
+    "dev": "parcel ./src/views/*.html",
+    "build": "parcel build ./src/views/*.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kabir-shah/conode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kabir-shah/conode/issues"
+  },
+  "homepage": "https://github.com/kabir-shah/conode#readme",
+  "dependencies": {
+    "parcel": "^1.12.3"
+  }
+}
