@@ -52,10 +52,10 @@ button, input {
 	margin-top: 15px;
 	margin-bottom: 15px;
 	border: none;
+	font-size: 16.00px;
 }
 
 button {
-	font-size: 16.00px;
 	background-color: #5965A1;
 	color: #D4D7E7;
 }
