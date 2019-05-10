@@ -18,6 +18,34 @@ h1, h2, h3, h4, h5, h6, p {
 	font-family: "Poppins", sans-serif;
 }
 
+h1 {
+	font-size: 48.83px;
+}
+
+h2 {
+	font-size: 39.06px;
+}
+
+h3 {
+	font-size: 31.25px;
+}
+
+h4 {
+	font-size: 25.00px;
+}
+
+h5 {
+	font-size: 20.00px;
+}
+
+h6 {
+	font-size: 16.00px;
+}
+
+p {
+	font-size: 20px;
+}
+
 .container {
 	max-width: 700px;
 	margin: 0 auto;
