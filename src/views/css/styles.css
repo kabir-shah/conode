@@ -16,6 +16,8 @@ body {
 
 h1, h2, h3, h4, h5, h6, p {
 	font-family: "Poppins", sans-serif;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 h1 {
@@ -65,23 +67,38 @@ button {
 }
 
 input {
+	font-family: "Poppins", sans-serif;
 	background-color: #414A76;
 	color: #FFFFFF;
 }
 
 .container {
-	max-width: 700px;
+	max-width: 1000px;
+	width: 90%;
 	margin: 0 auto;
 }
 
 .box {
+	padding: 30px;
 	background-color: #2A2F4C
 }
 
+.form {
+	text-align: center;
+}
+
+.form h5 {
+	margin: 0;
+}
+
 .form button, .form input {
-	width: 300px;
+	width: 250px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.form button {
+	margin-bottom: 0;
 }
 
 .secondary-text {
