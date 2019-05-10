@@ -87,7 +87,7 @@ input {
 	text-align: center;
 }
 
-.form h5 {
+.form h3, .form h5 {
 	margin: 0;
 }
 
