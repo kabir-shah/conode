@@ -1,16 +1,19 @@
 body {
-    background-color: #121521;
+	background-color: #121521;
 }
+
 .box {
-    background-color: #2A2F4C
+	background-color: #2A2F4C
 }
 
 .button {
-    background-color: #5965A1;
+	background-color: #5965A1;
 }
+
 .input {
-    background-color: #414A76;
+	background-color: #414A76;
 }
+
 .secondary-text {
-    color: #D4D7E7;
+	color: #D4D7E7;
 }
