@@ -46,9 +46,16 @@ p {
 	font-size: 20px;
 }
 
+button, input {
+	display: block;
+}
+
 button {
 	padding: 14px;
+	font-size: 16.00px;
+	color: #D4D7E7;
 	background-color: #5965A1;
+	border: none;
 }
 
 .container {
