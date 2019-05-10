@@ -51,13 +51,22 @@ button, input {
 	padding: 15px;
 	margin-top: 15px;
 	margin-bottom: 15px;
+	border: none;
 }
 
 button {
 	font-size: 16.00px;
-	color: #D4D7E7;
 	background-color: #5965A1;
-	border: none;
+	color: #D4D7E7;
+}
+
+::placeholder {
+	color: #D4D7E7;
+}
+
+input {
+	background-color: #414A76;
+	color: #FFFFFF;
 }
 
 .container {
@@ -69,8 +78,8 @@ button {
 	background-color: #2A2F4C
 }
 
-.input {
-	background-color: #414A76;
+.form button, .form input {
+	width: 300px;
 }
 
 .secondary-text {
