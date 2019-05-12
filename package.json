@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "Collaborative project-based learning tool for programming.",
   "scripts": {
-    "dev": "parcel ./src/views/*.html",
-    "build": "parcel build ./src/views/*.html"
+    "server": "node src/server/index.js"
   },
   "repository": {
     "type": "git",
