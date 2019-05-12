@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+
+	<title>Conode</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+	<link rel="stylesheet" type="text/css" href="./css/projects.css" />
+</head>
+
+<body>
+	<div id="root"></div>
+
+	<script id="template" type="text/mvl">
+		<div class="container">
+			<div class="nav">
+				<div class="nav-left">
+					<h3 id="logo"><a href="./index.html">Conode</a></h3>
+                </div>
+
+            </div>
+            <for={$project} of={projects}>
+                <div class="project">
+                    <img src={$project.image} width="100px"/>
+                    <h5>{$project.name}</h5>
+                    <p class="secondary-text">{$project.description}</p>
+                </div>
+            </for>
+		</div>
+	</script>
+
+	<script src="./js/projects.js"></script>
+</body>
+
+</html>
