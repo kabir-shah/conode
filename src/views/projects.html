@@ -21,15 +21,14 @@
 				<div class="nav-left">
 					<h3 id="logo"><a href="./index.html">Conode</a></h3>
 				</div>
-
 			</div>
-			<for={$project} of={projects}>
+			{{#each projects}}
 			<div class="project">
-				<img src={$project.image} width="100px"/>
-				<h5>{$project.name}</h5>
-				<p class="secondary-text">{$project.description}</p>
+				<img src={{image}} width="100px"/>
+				<h5>{{name}}</h5>
+				<p class="secondary-text">{description}</p>
 			</div>
-			</for>
+			{{/each}}
 		</div>
 
 		<script src="./js/projects.js"></script>
