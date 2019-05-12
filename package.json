@@ -15,6 +15,11 @@
   },
   "homepage": "https://github.com/kabir-shah/conode#readme",
   "dependencies": {
-    "parcel": "^1.12.3"
+    "bcrypt": "^3.0.6",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.7",
+    "parcel": "^1.12.3",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
   }
 }
