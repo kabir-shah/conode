@@ -27,11 +27,13 @@
 				</div>
 			</div>
 			<div class="form box">
-				<h3>Sign up for free</h3>
-				<input type="text" name="username" placeholder="Username" required/>
-				<input type="text" name="email" placeholder="Email address" required/>
-				<input type="password" name="password" placeholder="Password" required/>
-				<button>Sign Up</button>
+				<form action="/signup" method="POST">
+					<h3>Sign up for free</h3>
+					<input type="text" name="username" placeholder="Username" required/>
+					<input type="text" name="email" placeholder="Email address" required/>
+					<input type="password" name="password" placeholder="Password" required/>
+					<button>Sign Up</button>
+				</form>
 			</div>
 		</div>
 

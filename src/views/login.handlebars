@@ -27,10 +27,12 @@
 				</div>
 			</div>
 			<div class="form box">
-				<h3>Login</h3>
-				<input type="text" placeholder="Email address" required/>
-				<input type="password" placeholder="Password" required/>
-				<button>Login</button>
+				<form action="/login" method="POST">
+					<h3>Login</h3>
+					<input type="email" name="email" placeholder="Email address" required/>
+					<input type="password" name="password" placeholder="Password" required/>
+					<button>Login</button>
+				</form>
 			</div>
 		</div>
 
