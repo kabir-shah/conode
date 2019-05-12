@@ -1,4 +1,5 @@
 const express = require("express");
+const expressHandlebars = require("express-handlebars");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
@@ -21,6 +22,13 @@ const User = new Schema({
 
 const Users = mongoose.model("Users", User);
 
+const hbs = expressHandlebars.create({});
+
+app.engine("handlebars", hbs.engine);
+app.set("views", path.resolve("src/views"));
+app.set("view engine", "handlebars");
+app.use("/css", express.static(path.resolve("src/views/css")));
+app.use("/js", express.static(path.resolve("src/views/js")));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -44,21 +52,6 @@ passport.use("local", new LocalStrategy((email, password, done) => {
 		.catch(err => done(err));
 }));
 
-fs.readdir(path.resolve("../../dist"), (err, files) => {
-	if (err) console.error(err);
-
-	for (let i = 0; i < files.length; i++) {
-		const file = files[i];
-		const fileType = path.extname(file);
-
-		if (fileType === ".js" || fileType === ".css") {
-			app.get("/" + path.basename(file), (req, res) => {
-				res.sendFile(path.resolve(path.join("../../dist/", file)));
-			});
-		}
-	}
-});
-
 function authenticated(req, res, next) {
 	if (req.isAuthenticated()) {
 		next();
@@ -68,15 +61,15 @@ function authenticated(req, res, next) {
 }
 
 app.get("/", (req, res) => {
-	res.sendFile(path.resolve("../../dist/index.html"));
+	res.render("index");
 });
 
 app.get("/signup", (req, res) => {
-	res.sendFile(path.resolve("../../dist/signup.html"));
+	res.render("signup");
 });
 
 app.get("/login", (req, res) => {
-	res.sendFile(path.resolve("../../dist/login.html"));
+	res.render("login");
 });
 
 app.post("/signup", (req, res) => {
