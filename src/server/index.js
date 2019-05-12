@@ -48,7 +48,10 @@ passport.deserializeUser((id, done) => {
 	Users.findById(id, (err, user) => done(err, user));
 });
 
-passport.use("local", new LocalStrategy((email, password, done) => {
+passport.use("local", new LocalStrategy({
+	usernameField: "email",
+	passwordField: "password"
+}, (email, password, done) => {
 	Users.findOne({ email })
 		.then(user => {
 			if (!user || !bcrypt.compareSync(password, user.password)) {
