@@ -26,9 +26,15 @@
 					<p id="logo"><a href="./signup">Sign Up</a></p>
 				</div>
 			</div>
+
 			<div class="form box">
 				<form action="/login" method="POST">
 					<h3>Login</h3>
+
+					{{#if error}}
+					<p class="error">{{error}}</p>
+					{{/if}}
+
 					<input type="email" name="email" placeholder="Email address" required/>
 					<input type="password" name="password" placeholder="Password" required/>
 					<button>Login</button>

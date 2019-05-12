@@ -125,6 +125,10 @@ input {
 	margin-bottom: 0;
 }
 
+.error {
+	color: #f99;
+}
+
 .secondary-text {
 	color: #D4D7E7;
 }

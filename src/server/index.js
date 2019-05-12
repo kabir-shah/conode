@@ -72,11 +72,7 @@ function authenticated(req, res, next) {
 }
 
 app.get("/", (req, res) => {
-	if (req.user) {
-		res.render("index", { username: req.user.username });
-	} else {
-		res.render("index");
-	}
+	res.render("index", { user: req.user });
 });
 
 app.get("/signup", (req, res) => {
@@ -96,9 +92,11 @@ app.post("/signup", (req, res) => {
 	const { email, username, password } = req.body;
 	Users.create({ email, username, password: bcrypt.hashSync(password, 12) })
 		.then(user => {
-			req.login(user, err => {
-				if (err) {
-					next(err);
+			req.login(user, error => {
+				if (error) {
+					res.render("index", {
+						error: "There was an error logging in after signing up."
+					});
 				} else {
 					res.redirect("/");
 				}
@@ -106,17 +104,40 @@ app.post("/signup", (req, res) => {
 		})
 		.catch(err => {
 			if (err.name === "ValidationError") {
-				res.redirect("/register");
+				res.render("signup", {
+					error: "Invalid email, username, or password."
+				});
 			} else {
-				next(err);
+				res.render("index", {
+					error: "There was an error while creating the account."
+				});
 			}
 		});
 });
 
-app.post("/login", passport.authenticate("local", {
-	successRedirect: "/",
-	failureRedirect: "/login"
-}));
+app.post("/login", (req, res) => {
+	passport.authenticate("local", (err, user, info) => {
+		if (err) {
+			return res.render("login", {
+				error: "There was an error while logging in."
+			});
+		} else if (user) {
+			req.logIn(user, (err) => {
+				if (err) {
+					return res.render("login", {
+						error: "There was an error while logging in."
+					});
+				} else {
+					return res.render("index", { user });
+				}
+			});
+		} else {
+			return res.render("login", {
+				error: info.message
+			});
+		}
+	})(req, res);
+});
 
 app.listen(port, () => {
 	console.log(`Conode started on port ${port}`);
