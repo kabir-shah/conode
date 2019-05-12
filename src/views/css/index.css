@@ -7,3 +7,16 @@
 #signup {
 	display: inline-block;
 }
+
+#features {
+	margin-top: 100px;
+}
+
+.feature {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.container {
+	margin-bottom: 100px;
+}
