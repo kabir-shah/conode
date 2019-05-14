@@ -1,5 +1,6 @@
 const express = require("express");
 const expressHandlebars = require("express-handlebars");
+const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const path = require("path");
