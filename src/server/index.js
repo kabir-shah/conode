@@ -50,4 +50,14 @@ app.get("/", (req, res) => {
 	});
 });
 
+app.post("/create", (req, res) => {
+	Project.create(req.body, (err, project) => {
+		if (err) {
+			res.send("There was an error creating the project.");
+		} else {
+			res.redirect("/projects/" + project.id);
+		}
+	});
+});
+
 app.listen(port, () => console.log(`Conode is running on port ${port}.`));
