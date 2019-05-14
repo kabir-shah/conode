@@ -27,9 +27,9 @@
 				<h5 class="secondary-text">Find like-minded people to make projects and explore programming with.</h5>
 			</div>
 			<div id="projects" class="box">
-				{{each project}}
+				{{#each project}}
 					<h6>{{title}}</h6>
-					<img href="{{image}}"></img>
+					<img src="{{image}}"/>
 					<p>{{description}}</p>
 				{{/each}}
 			</div>
