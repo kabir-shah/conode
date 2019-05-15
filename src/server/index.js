@@ -72,6 +72,10 @@ app.get("/create", (req, res) => {
 	res.render("create");
 });
 
+app.get("/team", (req, res) => {
+	res.render("team");
+});
+
 app.post("/create", (req, res) => {
 	Project.create(req.body, (err, project) => {
 		if (err) {
