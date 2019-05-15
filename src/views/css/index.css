@@ -12,14 +12,35 @@
 }
 
 #features {
-	margin-top: 100px;
-}
-
-.feature {
-	margin-top: 30px;
-	margin-bottom: 30px;
+	display: grid;
+	grid-template-columns: repeat(2, 485px);
+	grid-column-gap: 15px;
+	grid-row-gap: 15px;
 }
 
 .container {
 	margin-bottom: 100px;
+}
+
+.project a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.project img {
+	max-width: 100%;
+}
+
+
+
+#projects {
+	display: grid;
+	grid-template-columns: repeat(2, 485px);
+	grid-column-gap: 15px;
+	grid-row-gap: 15px;
+}
+
+#feature-heading {
+	margin-top: 50px;
+
 }
