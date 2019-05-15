@@ -73,7 +73,26 @@ app.get("/create", (req, res) => {
 });
 
 app.get("/team", (req, res) => {
-	res.render("team");
+	res.render("team", {
+		project: {
+			id: 1,
+			date: Date.now(),
+			title: "Lorem Ipsum",
+			author: "Jane Doe",
+			description: "Lorem ipsum dolor amet fashion axe post-ironic green juice cornhole vaporware asymmetrical shaman health goth etsy 90's. Hell of keffiyeh yuccie gastropub, pickled pok pok portland air plant kitsch slow-carb fixie iPhone blue bottle. Jianbing hoodie everyday carry pinterest.",
+			image: "https://unsplash.com/photos/6sMGdkj3Ywg/download?force=true",
+			content: "Some sick content here.",
+			likes: 1000,
+			topics: ["JavaScript", "Python", "Mr. Brown", "Organic Chemistry"]
+		},
+		members: [{
+			email: "mrbrown@fbi.gov",
+			name: "Adam Brown"
+		}, {
+			email: "trump@the_donald.com",
+			name: "Donald Trump"
+		}]
+	});
 });
 
 app.post("/create", (req, res) => {
