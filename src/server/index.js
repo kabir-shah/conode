@@ -85,7 +85,7 @@ app.get("/team", (req, res) => {
 			likes: 1000,
 			topics: ["JavaScript", "Python", "Mr. Brown", "Organic Chemistry"]
 		},
-		members: [{
+		team: [{
 			email: "mrbrown@fbi.gov",
 			name: "Adam Brown"
 		}, {
