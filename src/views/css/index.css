@@ -7,19 +7,26 @@
 	width: 60%;
 }
 
-#signup {
-	display: inline-block;
+.container {
+	margin-bottom: 100px;
+}
+
+#feature-heading {
+	margin-top: 50px;
 }
 
 #features {
 	display: grid;
-	grid-template-columns: repeat(2, 485px);
+	grid-template-columns: repeat(auto-fill, 485px);
 	grid-column-gap: 15px;
 	grid-row-gap: 15px;
 }
 
-.container {
-	margin-bottom: 100px;
+#projects {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 485px);
+	grid-column-gap: 15px;
+	grid-row-gap: 15px;
 }
 
 .project a {
@@ -29,18 +36,4 @@
 
 .project img {
 	max-width: 100%;
-}
-
-
-
-#projects {
-	display: grid;
-	grid-template-columns: repeat(2, 485px);
-	grid-column-gap: 15px;
-	grid-row-gap: 15px;
-}
-
-#feature-heading {
-	margin-top: 50px;
-
 }
