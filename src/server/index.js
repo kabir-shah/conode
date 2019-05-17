@@ -14,9 +14,13 @@ mongoose.connect("mongodb://localhost/Conode", {
 	useNewUrlParser: true
 });
 
-const TeamSchema = new Schema({
+const TeamMemberSchema = new Schema({
 	email: String,
 	name: String
+});
+
+const TeamSchema = new Schema({
+	members: [TeamMemberSchema]
 });
 
 const ProjectSchema = new Schema({
@@ -40,7 +44,6 @@ const ProjectSchema = new Schema({
 });
 
 const Project = mongoose.model("Project", ProjectSchema);
-const Team = mongoose.model("Team", TeamSchema);
 
 app.engine("handlebars", hbs.engine);
 app.set("views", path.resolve("src/views"));
@@ -104,14 +107,21 @@ app.get("/team", (req, res) => {
 			`,
 			likes: 1000,
 			topics: ["JavaScript", "Python", "Mr. Brown", "Organic Chemistry"],
-			teams: [{
+			teams: [[{
 				email: "mrbrown@fbi.gov",
 				name: "Adam Brown"
 			}, {
 				email: "trump@the_donald.com",
 				name: "Donald Trump"
-			}]
-		}
+			}]]
+		},
+		team: [{
+			email: "mrbrown@fbi.gov",
+			name: "Adam Brown"
+		}, {
+			email: "trump@the_donald.com",
+			name: "Donald Trump"
+		}]
 	});
 });
 
