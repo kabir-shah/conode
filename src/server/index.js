@@ -11,6 +11,10 @@ const hbs = expressHandlebars.create({});
 const Schema = mongoose.Schema;
 const port = 3000;
 
+const renderer = new marked.Renderer();
+
+renderer.listitem = text => `<li><p>${text}</p></li>`;
+
 mongoose.connect("mongodb://localhost/Conode", {
 	useCreateIndex: true,
 	useNewUrlParser: true
@@ -106,7 +110,7 @@ print(“Use code blocks to share programming ideas.”);
 \`\`\`
 
 Let your creativity flow.
-`),
+`, { renderer }),
 			likes: 1000,
 			topics: ["JavaScript", "Python", "Mr. Brown", "Organic Chemistry"],
 			teams: [[{
