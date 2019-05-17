@@ -2,6 +2,7 @@ const express = require("express");
 const expressHandlebars = require("express-handlebars");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const moment = require("moment");
 const path = require("path");
 
 const app = express();
@@ -86,7 +87,7 @@ app.get("/team", (req, res) => {
 	res.render("team", {
 		project: {
 			id: 1,
-			date: Date.now(),
+			date: moment.unix(Math.floor(Date.now() / 1000)).format("MMMM D, YYYY"),
 			title: "Lorem Ipsum",
 			author: "Jane Doe",
 			description: "Lorem ipsum dolor amet fashion axe post-ironic green juice cornhole vaporware asymmetrical shaman health goth etsy 90's. Hell of keffiyeh yuccie gastropub, pickled pok pok portland air plant kitsch slow-carb fixie iPhone blue bottle. Jianbing hoodie everyday carry pinterest.",
