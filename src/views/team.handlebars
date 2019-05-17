@@ -8,7 +8,8 @@
 
 		<title>Conode</title>
 
-		<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Poppins|Inconsolata" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/nord.min.css"/>
 		<link rel="stylesheet" type="text/css" href="./css/styles.css" />
 		<link rel="stylesheet" type="text/css" href="./css/team.css" />
 	</head>
@@ -30,7 +31,8 @@
 				{{/each}}
 			</ul>
 			<h1>{{project.title}}</h1>
-			<h3>By {{project.author}}. Created on {{project.date}}</h3>
+			<h3>By {{project.author}}</h3>
+			<h5>Created on {{project.date}}</h5>
 			<h6>{{project.likes}} Likes</h6>
 			<img src={{project.image}} id="project-image"/>
 			<h5 class=secondary-text>{{project.description}}</h5>
@@ -41,5 +43,7 @@
 				{{/each}}
 			</p>
 		</div>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+		<script src="./js/team.js"></script>
 	</body>
 </html>
