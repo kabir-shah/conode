@@ -14,6 +14,11 @@ mongoose.connect("mongodb://localhost/Conode", {
 	useNewUrlParser: true
 });
 
+const TeamSchema = new Schema({
+	email: String,
+	name: String
+});
+
 const ProjectSchema = new Schema({
 	id: {
 		type: String,
@@ -30,10 +35,12 @@ const ProjectSchema = new Schema({
 	image: String,
 	content: String,
 	likes: Number,
-	topics: [String]
+	topics: [String],
+	teams: [TeamSchema]
 });
 
 const Project = mongoose.model("Project", ProjectSchema);
+const Team = mongoose.model("Team", TeamSchema);
 
 app.engine("handlebars", hbs.engine);
 app.set("views", path.resolve("src/views"));
@@ -96,15 +103,15 @@ app.get("/team", (req, res) => {
 				Let your creativity flow.
 			`,
 			likes: 1000,
-			topics: ["JavaScript", "Python", "Mr. Brown", "Organic Chemistry"]
-		},
-		team: [{
-			email: "mrbrown@fbi.gov",
-			name: "Adam Brown"
-		}, {
-			email: "trump@the_donald.com",
-			name: "Donald Trump"
-		}]
+			topics: ["JavaScript", "Python", "Mr. Brown", "Organic Chemistry"],
+			teams: [{
+				email: "mrbrown@fbi.gov",
+				name: "Adam Brown"
+			}, {
+				email: "trump@the_donald.com",
+				name: "Donald Trump"
+			}]
+		}
 	});
 });
 
