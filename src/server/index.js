@@ -105,7 +105,7 @@ Markdown-based content for your project.
 * Write instructions
 * Create a course
 
-\`\`\`
+\`\`\`python
 print(“Use code blocks to share programming ideas.”);
 \`\`\`
 
