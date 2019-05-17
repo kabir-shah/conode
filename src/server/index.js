@@ -106,7 +106,7 @@ Markdown-based content for your project.
 * Create a course
 
 \`\`\`python
-print(“Use code blocks to share programming ideas.”);
+print("Use code blocks to share programming ideas.");
 \`\`\`
 
 Let your creativity flow.
