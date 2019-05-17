@@ -106,6 +106,12 @@ Markdown-based content for your project.
 * Create a course
 
 \`\`\`python
+def fib(n):
+	if n < 2:
+		return n
+	else:
+		return fib(n - 2) + fib(n - 1)
+
 print("Use code blocks to share programming ideas.")
 \`\`\`
 
