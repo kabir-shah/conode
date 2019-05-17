@@ -94,19 +94,19 @@ app.get("/team", (req, res) => {
 			description: "Lorem ipsum dolor amet fashion axe post-ironic green juice cornhole vaporware asymmetrical shaman health goth etsy 90's. Hell of keffiyeh yuccie gastropub, pickled pok pok portland air plant kitsch slow-carb fixie iPhone blue bottle. Jianbing hoodie everyday carry pinterest.",
 			image: "https://unsplash.com/photos/6sMGdkj3Ywg/download?force=true",
 			content: marked(`
-				Markdown-based content for your project.
+Markdown-based content for your project.
 
-				* Describe goals
-				* Make a specification
-				* Write instructions
-				* Create a course
+* Describe goals
+* Make a specification
+* Write instructions
+* Create a course
 
-				\`\`\`
-				print(“Use code blocks to share programming ideas.”);
-				\`\`\`
+\`\`\`
+print(“Use code blocks to share programming ideas.”);
+\`\`\`
 
-				Let your creativity flow.
-			`),
+Let your creativity flow.
+`),
 			likes: 1000,
 			topics: ["JavaScript", "Python", "Mr. Brown", "Organic Chemistry"],
 			teams: [[{
