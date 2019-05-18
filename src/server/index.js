@@ -83,7 +83,7 @@ app.get("/create", (req, res) => {
 	res.render("create");
 });
 
-app.get("/project/:id", (req, res) => {
+app.get("/projects/:id", (req, res) => {
 	Project.findOne({ _id: req.params.id }).then(project => {
 		res.render("project", { project });
 	}).catch(err => {
