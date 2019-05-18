@@ -81,6 +81,7 @@ app.get("/", (req, res) => {
 		res.render("index", { projects });
 	}).catch(err => {
 		res.send("There was an error fetching the projects.");
+		console.log(err);
 	});
 });
 
@@ -88,8 +89,13 @@ app.get("/create", (req, res) => {
 	res.render("create");
 });
 
-app.get("/project", (req, res) => {
-	res.render("project");
+app.get("/project/:id", (req, res) => {
+	Project.find({ id: req.params.id }).then(project => {
+		res.render("project", { project });
+	}).catch(err => {
+		console.log(err);
+		res.send("There was an error fetching the project.");
+	});
 });
 
 app.get("/team", (req, res) => {
@@ -145,6 +151,7 @@ app.post("/create", (req, res) => {
 	Project.create(req.body, (err, project) => {
 		if (err) {
 			res.send("There was an error creating the project.");
+			console.log(err);
 		} else {
 			res.redirect("/projects/" + project.id);
 		}
