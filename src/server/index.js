@@ -84,7 +84,7 @@ app.get("/create", (req, res) => {
 });
 
 app.get("/project/:id", (req, res) => {
-	Project.find({ _id: req.params.id }).then(project => {
+	Project.findOne({ _id: req.params.id }).then(project => {
 		res.render("project", { project });
 	}).catch(err => {
 		console.log(err);
@@ -149,6 +149,10 @@ app.post("/create", (req, res) => {
 			res.redirect("/projects/" + project.id);
 		}
 	});
+});
+
+app.post("/project/delete/:id", (req, res) => {
+	Project.deleteOne({ _id: req.params._id });
 });
 
 app.listen(port, () => console.log(`Conode is running on port ${port}.`));

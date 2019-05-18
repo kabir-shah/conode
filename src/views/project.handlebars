@@ -27,7 +27,7 @@
 			<h3>By {{project.author}}</h3>
 			<h5>Created on {{project.date}}</h5>
 			<h6>{{project.likes}} Likes</h6>
-			<img src={{project.image}} id="project-image"/>
+			<img src="{{project.image}}" id="project-image"/>
 			<h5 class=secondary-text>{{project.description}}</h5>
 			<p>{{{project.content}}}</p>
 			<p>
@@ -35,6 +35,10 @@
 					<span class="topic box">{{this}}</span>
 				{{/each}}
 			</p>
+
+			<form action="/delete/{{project._id}}" method="POST">
+				<button>delete this</button>
+			</form>
 		</div>
 	</body>
 </html>
