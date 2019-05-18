@@ -30,11 +30,6 @@ const TeamSchema = new Schema({
 });
 
 const ProjectSchema = new Schema({
-	id: {
-		type: String,
-		index: true,
-		unique: true
-	},
 	date: {
 		type: Date,
 		default: Date.now
@@ -65,7 +60,6 @@ app.get("/", (req, res) => {
 
 		for (let i = 0; i < 10; i++) {
 			fakeProjects.push({
-				id: 1,
 				date: Date.now(),
 				title: "Lorem Ipsum",
 				author: "Jane Doe",
@@ -101,7 +95,6 @@ app.get("/project/:id", (req, res) => {
 app.get("/team", (req, res) => {
 	res.render("team", {
 		project: {
-			id: 1,
 			date: moment.unix(Math.floor(Date.now() / 1000)).format("MMMM D, YYYY"),
 			title: "Lorem Ipsum",
 			author: "Jane Doe",
