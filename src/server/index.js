@@ -151,8 +151,4 @@ app.post("/create", (req, res) => {
 	});
 });
 
-app.get("/project/delete/:id", (req, res) => {
-	Project.deleteOne({ id: null });
-});
-
 app.listen(port, () => console.log(`Conode is running on port ${port}.`));
