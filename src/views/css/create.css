@@ -1,0 +1,30 @@
+#title {
+	font-size: 48.83px;
+}
+
+#description {
+	font-size: 20px;
+}
+
+#author {
+	font-size: 31.25px;
+}
+
+input, textarea {
+	background-color: transparent;
+	width: 100%;
+	border: none;
+	color: #FFFFFF;
+	overflow: hidden;
+	padding: 0;
+}
+
+input:focus, textarea:focus {
+	outline: none;
+}
+
+textarea {
+	resize: none;
+	text-align: left;
+	font-family: "Inconsolata", monospace;
+}
