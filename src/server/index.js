@@ -77,8 +77,8 @@ app.get("/", (req, res) => {
 			});
 		}
 
-		res.render("index", {projects: fakeProjects});
-		// res.render("index", { projects });
+		//res.render("index", {projects: fakeProjects});
+		res.render("index", { projects });
 	}).catch(err => {
 		res.send("There was an error fetching the projects.");
 	});
@@ -86,6 +86,10 @@ app.get("/", (req, res) => {
 
 app.get("/create", (req, res) => {
 	res.render("create");
+});
+
+app.get("/project", (req, res) => {
+	res.render("project");
 });
 
 app.get("/team", (req, res) => {
