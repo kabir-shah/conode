@@ -8,7 +8,7 @@
 
 		<title>Conode</title>
 
-		<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Poppins|Inconsolata" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="./css/styles.css" />
 		<link rel="stylesheet" type="text/css" href="./css/create.css" />
 	</head>
@@ -25,30 +25,33 @@
 			</div>
 
 			<div class="editor">
-				<input id="title" name="title" placeholder="Title"/>
-				<input id="description" name="description" placeholder="A short description of your project."/>
-				<input id="topics" name="topics" placeholder="A list of comma-separated topics that are associated with your project."/>
+				<form action="/create" method="POST">
+					<input id="title" name="title" placeholder="Title"/>
+					<input id = "author" name ="author" placeholder="Author"/>
+					<input id="description" name="description" placeholder="A short description for your project."/>
+					<input id="image" name="image" placeholder="Image url"/>
+					<input id="topics" name="topics" placeholder="Topics"/>
+					<textarea id="content" name="content">
+				
+Markdown-based content for your project.
 
-				<textarea id="content" name="content">
-					Markdown-based content for your project.
+* Describe goals
+* Make a specification
+* Write instructions
+* Create a course
 
-					* Describe goals
-					* Make a specification
-					* Write instructions
-					* Create a course
+```
+print(“Use code blocks to share programming ideas.”);
+```
 
-					```
-					print(“Use code blocks to share programming ideas.”);
-					```
-
-					Let your creativity flow.
-				</textarea>
-			</div>
-
-			<div class="actions">
-				<button>Preview</button>
-				<button>Publish</button>
+Let your creativity flow.
+					</textarea>
+					<div class="actions">
+						<button>Publish</button>
+					</div>
+				</form>
 			</div>
 		</div>
+		<script src="./js/create.js"></script>
 	</body>
 </html>
