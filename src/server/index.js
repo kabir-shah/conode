@@ -84,7 +84,7 @@ app.get("/create", (req, res) => {
 });
 
 app.get("/project/:id", (req, res) => {
-	Project.find({ id: req.params.id }).then(project => {
+	Project.find({ _id: req.params.id }).then(project => {
 		res.render("project", { project });
 	}).catch(err => {
 		console.log(err);
