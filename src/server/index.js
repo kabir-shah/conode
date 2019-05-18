@@ -151,7 +151,7 @@ app.post("/create", (req, res) => {
 	});
 });
 
-app.post("/project/delete/:id", (req, res) => {
+app.get("/project/delete/:id", (req, res) => {
 	Project.deleteOne({ id: null });
 });
 
