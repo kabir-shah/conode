@@ -84,8 +84,8 @@ app.get("/create", (req, res) => {
 });
 
 app.get("/projects/:id", (req, res) => {
-	Project.findOne({ _id: req.params.id }).then(project => {
-		res.render("project", { project });
+	Project.findById(req.params.id).then(project => {
+		res.render("project", { project: { ...project, date: moment(project.date).format("MMMM D, YYYY") } });
 	}).catch(err => {
 		console.log(err);
 		res.send("There was an error fetching the project.");
@@ -141,6 +141,8 @@ Let your creativity flow.
 });
 
 app.post("/create", (req, res) => {
+	req.body.topics = req.body.topics.split(",").map(str => str.trim());
+
 	Project.create(req.body, (err, project) => {
 		if (err) {
 			res.send("There was an error creating the project.");
