@@ -137,7 +137,7 @@ app.post("/projects/:id/teams/join-code", (req, res) => {
 		const team = project.teams.id(req.body.code);
 
 		if (team) {
-			if (team.length === team.max) {
+			if (team.members.length === team.max) {
 				res.end("The provided team is full.");
 			} else {
 				team.members.push({
@@ -177,7 +177,7 @@ app.post("/projects/:id/teams/join-skill", (req, res) => {
 			const testTeam = project.teams[i];
 
 			if (
-					testTeam.length !== testTeam.max &&
+					testTeam.members.length !== testTeam.max &&
 					Math.abs(testTeam.skill - testSkill) < (100 / 3)
 			) {
 				team = testTeam;
