@@ -59,8 +59,8 @@ app.engine("handlebars", hbs.engine);
 app.set("views", path.join(__dirname, "/views"));
 app.set("view engine", "handlebars");
 
-app.use("/css", express.static(path.join(__dirname, "./views/css")));
-app.use("/js", express.static(path.join(__dirname, "./views/js")));
+app.use("/css", express.static(path.join(__dirname, "/views/css")));
+app.use("/js", express.static(path.join(__dirname, "/views/js")));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
