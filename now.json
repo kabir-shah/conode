@@ -6,7 +6,15 @@
 	],
 	"routes": [
 		{
-			"src": "/(.*)",
+			"src": "/css/(.*)",
+			"dest": "/views/css/$1"
+		},
+		{
+			"src": "/js/(.*)",
+			"dest": "/views/js/$1"
+		},
+		{
+			"src": "/.*",
 			"dest": "/index.js"
 		}
 	]
