@@ -85,7 +85,12 @@ app.get("/create", (req, res) => {
 
 app.get("/projects/:id", (req, res) => {
 	Project.findById(req.params.id).then(project => {
-		res.render("project", { project: { ...project, date: moment(project.date).format("MMMM D, YYYY") } });
+		res.render("project", {
+			project: {
+				...project.toObject(),
+				date: moment(project.date).format("MMMM D, YYYY")
+			}
+		});
 	}).catch(err => {
 		console.log(err);
 		res.send("There was an error fetching the project.");
