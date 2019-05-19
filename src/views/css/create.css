@@ -11,21 +11,16 @@
 }
 
 input, textarea {
-	background-color: transparent;
 	width: 100%;
+	padding: 0;
+	background-color: transparent;
 	border: none;
 	color: #FFFFFF;
 	overflow: hidden;
-	padding: 0;
-}
-
-input:focus, textarea:focus {
-	outline: none;
 }
 
 textarea {
-	font-size: 20px;
 	resize: none;
-	text-align: left;
+	font-size: 20px;
 	font-family: "Inconsolata", monospace;
 }

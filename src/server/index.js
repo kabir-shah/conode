@@ -41,7 +41,6 @@ const ProjectSchema = new Schema({
 	description: String,
 	image: String,
 	content: String,
-	likes: Number,
 	topics: [String],
 	teams: [TeamSchema]
 });
@@ -65,11 +64,10 @@ app.use("/js", express.static(path.resolve("src/views/js")));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-	Project.find().sort({ date: -1 }).limit(10).sort({ likes: -1 }).then(projects => {
+	Project.find().sort({ date: -1 }).then(projects => {
 		res.render("index", { projects });
 	}).catch(err => {
 		res.send("There was an error fetching the projects.");
-		console.log(err);
 	});
 });
 
@@ -83,7 +81,6 @@ app.get("/projects/:id", (req, res) => {
 			project: projectFormatted(project)
 		});
 	}).catch(err => {
-		console.log(err);
 		res.send("There was an error fetching the project.");
 	});
 });
@@ -108,7 +105,6 @@ app.post("/projects/create", (req, res) => {
 	Project.create(req.body, (err, project) => {
 		if (err) {
 			res.send("There was an error creating the project.");
-			console.log(err);
 		} else {
 			res.redirect("/projects/" + project._id);
 		}

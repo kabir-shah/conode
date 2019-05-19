@@ -72,6 +72,14 @@ input {
 	color: #FFFFFF;
 }
 
+button:focus, input:focus, textarea:focus {
+	outline: none;
+}
+
+pre code {
+	font-size: 16px;
+}
+
 .container {
 	max-width: 1000px;
 	width: 90%;

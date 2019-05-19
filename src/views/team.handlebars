@@ -24,20 +24,22 @@
 					<p id="logo"><a href="/projects/create">Create a project</a></p>
 				</div>
 			</div>
-			<h1>Team Members</h1>
+			<h1>Team</h1>
 			<ul>
 				{{#each team.members}}
-					<li><p>{{name}} - {{email}}</p></li>
+					<li><p class="secondary-text">{{name}} - {{email}}</p></li>
 				{{/each}}
 			</ul>
+			<h5>Team Code</h5>
+			<p class="secondary-text"><code>{{team._id}}</code></p>
+
 			<h1>{{project.title}}</h1>
 			<h3>By {{project.author}}</h3>
-			<h5>Created on {{project.date}}</h5>
-			<h6>{{project.likes}} Likes</h6>
+			<h5 class="secondary-text">Created on {{project.date}}</h5>
 			<img src="{{project.image}}" id="project-image"/>
 			<h5 class="secondary-text">{{project.description}}</h5>
 			<p>{{{project.content}}}</p>
-			<p>
+			<p class="secondary-text">
 				{{#each project.topics}}
 					<span class="topic box">{{this}}</span>
 				{{/each}}
