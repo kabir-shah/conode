@@ -14,7 +14,7 @@ Moon({
 				<form action={"/projects/" + projectId + "/teams/create"} method="POST">
 					<input type="text" name="name" placeholder="Name"/>
 					<input type="email" name="email" placeholder="Email"/>
-					<input type="number" id="max" name="max" placeholder="Maximum number of members"/>
+					<input type="number" name="max" placeholder="Maximum number of members"/>
 					<button>Create a team</button>
 				</form>
 			</if>
@@ -22,7 +22,7 @@ Moon({
 				<form action={"/projects/" + projectId + "/teams/join-code"} method="POST">
 					<input type="text" name="name" placeholder="Name"/>
 					<input type="email" name="email" placeholder="Email"/>
-					<input type="text" id="code" name="code" placeholder="Team code"/>
+					<input type="text" name="code" placeholder="Team code"/>
 					<button>Join a team</button>
 				</form>
 			</else-if>
@@ -30,12 +30,18 @@ Moon({
 				<form action={"/projects/" + projectId + "/teams/join-skill"} method="POST">
 					<input type="text" name="name" placeholder="Name"/>
 					<input type="email" name="email" placeholder="Email"/>
+
+					<h5>Skill Level</h5>
+					<for={$topic} of={projectTopics}>
+						<input type="number" name={"topic-" + $topic} placeholder={"Proficiency in " + $topic + " from 0-100"}/>
+					</for>
 					<button>Join a team</button>
 				</form>
 			</else>
 		</div>
 	`,
-	projectId: window.location.pathname.split("/")[2],
+	projectId: window.projectId,
+	projectTopics: window.projectTopics,
 	state: "create",
 	changeState(state) {
 		Moon.set({ state });

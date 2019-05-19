@@ -161,4 +161,31 @@ app.post("/projects/:id/teams/join-code", (req, res) => {
 	});
 });
 
+app.post("/projects/:id/teams/join-skill", (req, res) => {
+	Project.findById(req.params.id).then(project => {
+		const team = project.teams.id(req.body.code);
+
+		if (team) {
+			if (team.length === team.max) {
+				res.end("The provided team is full.");
+			} else {
+				team.members.push({
+					name: req.body.name,
+					email: req.body.email
+				});
+
+				project.save().then(() => {
+					res.redirect(`/projects/${project._id}/teams/${team._id}`);
+				}).catch(err => {
+					res.end("There was an error joining the team.");
+				});
+			}
+		} else {
+			res.end("There was an error fetching the team.");
+		}
+	}).catch(err => {
+		res.send("There was an error fetching the project for the team.");
+	});
+});
+
 app.listen(port, () => console.log(`Conode is running on port ${port}.`));
