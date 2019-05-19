@@ -27,6 +27,7 @@ const TeamMemberSchema = new Schema({
 
 const TeamSchema = new Schema({
 	members: [TeamMemberSchema],
+	skill: Number,
 	max: Number
 });
 
@@ -121,6 +122,7 @@ app.post("/projects/:id/teams/create", (req, res) => {
 				name: req.body.name,
 				email: req.body.email
 			}],
+			skill: req.body.skill,
 			max: req.body.max
 		});
 
@@ -163,25 +165,42 @@ app.post("/projects/:id/teams/join-code", (req, res) => {
 
 app.post("/projects/:id/teams/join-skill", (req, res) => {
 	Project.findById(req.params.id).then(project => {
-		const team = project.teams.id(req.body.code);
+		let team;
+		let topicsLength = 0;
+
+		const testSkill = Object.keys(req.body).reduce((total, topic) => {
+			if (topic.slice(0, 6) === "topic-") {
+				topicsLength += 1;
+				return total + parseInt(req.body[topic], 10);
+			} else {
+				return total;
+			}
+		}, 0) / topicsLength;
+
+		for (let i = 0; i < project.teams.length; i++) {
+			const testTeam = project.teams[i];
+
+			if (
+					testTeam.length !== testTeam.max &&
+					Math.abs(testTeam.skill - testSkill) < (100 / 3)
+			) {
+				team = testTeam;
+			}
+		}
 
 		if (team) {
-			if (team.length === team.max) {
-				res.end("The provided team is full.");
-			} else {
-				team.members.push({
-					name: req.body.name,
-					email: req.body.email
-				});
+			team.members.push({
+				name: req.body.name,
+				email: req.body.email
+			});
 
-				project.save().then(() => {
-					res.redirect(`/projects/${project._id}/teams/${team._id}`);
-				}).catch(err => {
-					res.end("There was an error joining the team.");
-				});
-			}
+			project.save().then(() => {
+				res.redirect(`/projects/${project._id}/teams/${team._id}`);
+			}).catch(err => {
+				res.end("There was an error joining the team.");
+			});
 		} else {
-			res.end("There was an error fetching the team.");
+			res.end("There were no teams available for your skill level.");
 		}
 	}).catch(err => {
 		res.send("There was an error fetching the project for the team.");

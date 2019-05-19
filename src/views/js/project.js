@@ -14,6 +14,7 @@ Moon({
 				<form action={"/projects/" + projectId + "/teams/create"} method="POST">
 					<input type="text" name="name" placeholder="Name"/>
 					<input type="email" name="email" placeholder="Email"/>
+					<input type="number" name="skill" placeholder="Average skill level in topics from 0-100"/>
 					<input type="number" name="max" placeholder="Maximum number of members"/>
 					<button>Create a team</button>
 				</form>
