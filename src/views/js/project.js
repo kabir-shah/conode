@@ -11,7 +11,7 @@ Moon({
 			</ul>
 
 			<if={state === "create"}>
-				<form action="/projects/{{project._id}}/teams/create" method="POST">
+				<form action={"/projects/" + projectId + "/teams/create"} method="POST">
 					<input type="text" name="name" placeholder="Name"/>
 					<input type="email" name="email" placeholder="Email"/>
 					<input type="number" id="max" name="max" placeholder="Maximum number of members"/>
@@ -19,7 +19,7 @@ Moon({
 				</form>
 			</if>
 			<else-if={state === "join-code"}>
-				<form action="/projects/{{project._id}}/teams/join-code" method="POST">
+				<form action={"/projects/" + projectId + "/teams/join-code"} method="POST">
 					<input type="text" name="name" placeholder="Name"/>
 					<input type="email" name="email" placeholder="Email"/>
 					<input type="text" id="code" name="code" placeholder="Team code"/>
@@ -27,7 +27,7 @@ Moon({
 				</form>
 			</else-if>
 			<else>
-				<form action="/projects/{{project._id}}/teams/join-skill" method="POST">
+				<form action={"/projects/" + projectId + "/teams/join-skill"} method="POST">
 					<input type="text" name="name" placeholder="Name"/>
 					<input type="email" name="email" placeholder="Email"/>
 					<button>Join a team</button>
@@ -35,6 +35,7 @@ Moon({
 			</else>
 		</div>
 	`,
+	projectId: window.location.pathname.split("/")[2],
 	state: "create",
 	changeState(state) {
 		Moon.set({ state });
