@@ -55,6 +55,7 @@ button, input {
 	margin-bottom: 15px;
 	border: none;
 	font-size: 16.00px;
+	font-family: "Poppins", sans-serif;
 }
 
 button {
@@ -67,7 +68,6 @@ button {
 }
 
 input {
-	font-family: "Poppins", sans-serif;
 	background-color: #414A76;
 	color: #FFFFFF;
 }

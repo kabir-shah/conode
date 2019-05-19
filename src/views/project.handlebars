@@ -36,6 +36,16 @@
 					<span class="topic box">{{this}}</span>
 				{{/each}}
 			</p>
+
+			<form action="/project/{{project._id}}/create" method="POST">
+				<input type="number" id="members" name="members" placeholder="Number of members"/>
+				<button>Create a team</button>
+			</form>
+
+			<form action="/project/{{project._id}}/join" method="POST">
+				<input id="code" name="code" placeholder="Team code"/>
+				<button>Join a team</button>
+			</form>
 		</div>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
 		<script src="/js/highlight.js"></script>
