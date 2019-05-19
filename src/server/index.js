@@ -15,7 +15,7 @@ const renderer = new marked.Renderer();
 
 renderer.listitem = text => `<li><p>${text}</p></li>`;
 
-mongoose.connect("mongodb://localhost/Conode", {
+mongoose.connect(`mongodb+srv://${process.env.CONODE_USER}:${process.env.CONODE_PASSWORD}@conode-x8avs.mongodb.net/Conode?retryWrites=true`, {
 	useCreateIndex: true,
 	useNewUrlParser: true
 });
