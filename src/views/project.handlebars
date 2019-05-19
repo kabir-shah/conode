@@ -37,21 +37,12 @@
 				{{/each}}
 			</p>
 
-			<form action="/projects/{{project._id}}/teams/create" method="POST">
-				<input type="text" name="name" placeholder="Name"/>
-				<input type="email" name="email" placeholder="Email"/>
-				<input type="number" id="max" name="max" placeholder="Maximum number of members"/>
-				<button>Create a team</button>
-			</form>
-
-			<form action="/projects/{{project._id}}/teams/join" method="POST">
-				<input type="text" name="name" placeholder="Name"/>
-				<input type="email" name="email" placeholder="Email"/>
-				<input type="text" id="code" name="code" placeholder="Team code"/>
-				<button>Join a team</button>
-			</form>
+			<div id="root"></div>
 		</div>
+
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+		<script src="/js/lib/moon.min.js"></script>
 		<script src="/js/highlight.js"></script>
+		<script src="/js/project.js"></script>
 	</body>
 </html>
