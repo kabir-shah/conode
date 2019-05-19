@@ -20,7 +20,7 @@
 					<h3 id="logo"><a href="/">Conode</a></h3>
 				</div>
 				<div class="nav-right">
-					<p id="logo"><a href="/create">Create a project</a></p>
+					<p id="logo"><a href="/projects/create">Create a project</a></p>
 				</div>
 			</div>
 
@@ -37,13 +37,17 @@
 				{{/each}}
 			</p>
 
-			<form action="/project/{{project._id}}/create" method="POST">
-				<input type="number" id="members" name="members" placeholder="Number of members"/>
+			<form action="/projects/{{project._id}}/teams/create" method="POST">
+				<input type="text" name="name" placeholder="Name"/>
+				<input type="email" name="email" placeholder="Email"/>
+				<input type="number" id="max" name="max" placeholder="Maximum number of members"/>
 				<button>Create a team</button>
 			</form>
 
-			<form action="/project/{{project._id}}/join" method="POST">
-				<input id="code" name="code" placeholder="Team code"/>
+			<form action="/projects/{{project._id}}/teams/join" method="POST">
+				<input type="text" name="name" placeholder="Name"/>
+				<input type="email" name="email" placeholder="Email"/>
+				<input type="text" id="code" name="code" placeholder="Team code"/>
 				<button>Join a team</button>
 			</form>
 		</div>

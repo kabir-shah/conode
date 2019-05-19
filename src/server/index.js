@@ -21,12 +21,13 @@ mongoose.connect("mongodb://localhost/Conode", {
 });
 
 const TeamMemberSchema = new Schema({
-	email: String,
-	name: String
+	name: String,
+	email: String
 });
 
 const TeamSchema = new Schema({
-	members: [TeamMemberSchema]
+	members: [TeamMemberSchema],
+	max: Number
 });
 
 const ProjectSchema = new Schema({
@@ -71,7 +72,7 @@ app.get("/", (req, res) => {
 	});
 });
 
-app.get("/create", (req, res) => {
+app.get("/projects/create", (req, res) => {
 	res.render("create");
 });
 
@@ -86,55 +87,21 @@ app.get("/projects/:id", (req, res) => {
 	});
 });
 
-app.get("/team", (req, res) => {
-	res.render("team", {
-		project: {
-			date: moment.unix(Math.floor(Date.now() / 1000)).format("MMMM D, YYYY"),
-			title: "Lorem Ipsum",
-			author: "Jane Doe",
-			description: "Lorem ipsum dolor amet fashion axe post-ironic green juice cornhole vaporware asymmetrical shaman health goth etsy 90's. Hell of keffiyeh yuccie gastropub, pickled pok pok portland air plant kitsch slow-carb fixie iPhone blue bottle. Jianbing hoodie everyday carry pinterest.",
-			image: "https://unsplash.com/photos/6sMGdkj3Ywg/download?force=true",
-			content: marked(`
-Markdown-based content for your project.
+app.get("/projects/:projectId/teams/:teamId", (req, res) => {
+	Project.findById(req.params.projectId).then(project => {
+		const team = project.teams.id(req.params.teamId);
 
-* Describe goals
-* Make a specification
-* Write instructions
-* Create a course
-
-\`\`\`python
-def fib(n):
-	if n < 2:
-		return n
-	else:
-		return fib(n - 2) + fib(n - 1)
-
-print("Use code blocks to share programming ideas.")
-\`\`\`
-
-Let your creativity flow.
-`, { renderer }),
-			likes: 1000,
-			topics: ["JavaScript", "Python", "Mr. Brown", "Organic Chemistry"],
-			teams: [[{
-				email: "mrbrown@fbi.gov",
-				name: "Adam Brown"
-			}, {
-				email: "trump@the_donald.com",
-				name: "Donald Trump"
-			}]]
-		},
-		team: [{
-			email: "mrbrown@fbi.gov",
-			name: "Adam Brown"
-		}, {
-			email: "trump@the_donald.com",
-			name: "Donald Trump"
-		}]
+		if (team) {
+			res.render("team", { project: projectFormatted(project), team });
+		} else {
+			res.end("There was an error fetching the team.");
+		}
+	}).catch(err => {
+		res.end("There was an error fetching the project.");
 	});
 });
 
-app.post("/create", (req, res) => {
+app.post("/projects/create", (req, res) => {
 	req.body.topics = req.body.topics.split(",").map(str => str.trim());
 
 	Project.create(req.body, (err, project) => {
@@ -142,8 +109,28 @@ app.post("/create", (req, res) => {
 			res.send("There was an error creating the project.");
 			console.log(err);
 		} else {
-			res.redirect("/projects/" + project.id);
+			res.redirect("/projects/" + project._id);
 		}
+	});
+});
+
+app.post("/projects/:id/teams/create", (req, res) => {
+	Project.findById(req.params.id).then(project => {
+		project.teams.push({
+			members: [{
+				name: req.body.name,
+				email: req.body.email
+			}],
+			max: req.body.max
+		});
+
+		project.save().then(() => {
+			res.redirect(`/projects/${project._id}/teams/${project.teams[project.teams.length - 1]._id}`);
+		}).catch(err => {
+			res.end("There was an error creating the team.");
+		});
+	}).catch(err => {
+		res.send("There was an error fetching the project for the team.");
 	});
 });
 

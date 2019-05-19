@@ -3,8 +3,13 @@
 	padding: 10px;
 }
 
+form {
+	display: inline-block;
+	margin: 50px;
+}
+
 form:first-of-type {
-	margin-top: 50px;
+	margin-left: 0;
 }
 
 form input {
@@ -12,7 +17,6 @@ form input {
 }
 
 form input, form button {
-	display: inline-block;
 	height: 50px;
 	vertical-align: middle;
 }
