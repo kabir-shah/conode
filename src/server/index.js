@@ -46,6 +46,14 @@ const ProjectSchema = new Schema({
 
 const Project = mongoose.model("Project", ProjectSchema);
 
+function projectFormatted(project) {
+	return {
+		...project.toObject(),
+		content: marked(project.content, { renderer }),
+		date: moment(project.date).format("MMMM D, YYYY")
+	};
+}
+
 app.engine("handlebars", hbs.engine);
 app.set("views", path.resolve("src/views"));
 app.set("view engine", "handlebars");
@@ -56,22 +64,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
 	Project.find().sort({ date: -1 }).limit(10).sort({ likes: -1 }).then(projects => {
-		const fakeProjects = [];
-
-		for (let i = 0; i < 10; i++) {
-			fakeProjects.push({
-				date: Date.now(),
-				title: "Lorem Ipsum",
-				author: "Jane Doe",
-				description: "Lorem ipsum dolor amet fashion axe post-ironic green juice cornhole vaporware asymmetrical shaman health goth etsy 90's. Hell of keffiyeh yuccie gastropub, pickled pok pok portland air plant kitsch slow-carb fixie iPhone blue bottle. Jianbing hoodie everyday carry pinterest.",
-				image: "https://unsplash.com/photos/6sMGdkj3Ywg/download?force=true",
-				content: "Some sick content here.",
-				likes: 1000,
-				topics: ["JavaScript", "Python", "Mr. Brown", "Organic Chemistry"]
-			});
-		}
-
-		//res.render("index", {projects: fakeProjects});
 		res.render("index", { projects });
 	}).catch(err => {
 		res.send("There was an error fetching the projects.");
@@ -86,10 +78,7 @@ app.get("/create", (req, res) => {
 app.get("/projects/:id", (req, res) => {
 	Project.findById(req.params.id).then(project => {
 		res.render("project", {
-			project: {
-				...project.toObject(),
-				date: moment(project.date).format("MMMM D, YYYY")
-			}
+			project: projectFormatted(project)
 		});
 	}).catch(err => {
 		console.log(err);
