@@ -56,11 +56,11 @@ function projectFormatted(project) {
 }
 
 app.engine("handlebars", hbs.engine);
-app.set("views", path.resolve("src/views"));
+app.set("views", path.resolve("views"));
 app.set("view engine", "handlebars");
 
-app.use("/css", express.static(path.resolve("src/views/css")));
-app.use("/js", express.static(path.resolve("src/views/js")));
+app.use("/css", express.static(path.resolve("views/css")));
+app.use("/js", express.static(path.resolve("views/js")));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {

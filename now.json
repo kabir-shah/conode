@@ -1,6 +1,6 @@
 {
 	"version": 2,
 	"builds": [
-		{ "src": "src/server/index.js", "use": "@now/node-server" }
+		{ "src": "index.js", "use": "@now/node-server" }
 	]
 }

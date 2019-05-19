@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Collaborative project-based learning tool for programming.",
   "scripts": {
-    "start": "node src/server/index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
