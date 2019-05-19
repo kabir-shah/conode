@@ -1,6 +1,7 @@
 {
 	"version": 2,
 	"builds": [
+		{ "src": "views/*", "use": "@now/static" },
 		{ "src": "index.js", "use": "@now/node-server" }
 	]
 }
