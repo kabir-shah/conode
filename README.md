@@ -7,6 +7,7 @@ Collaborative project-based learning tool for programming.
 * Kabir Shah
 * Oleg Bychenkov
 * Jared Smith
+* Jacob Shaver
 
 ### Contributing
 
