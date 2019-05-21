@@ -76,6 +76,11 @@ button:focus, input:focus, textarea:focus {
 	outline: none;
 }
 
+code {
+	padding: 1px;
+	background-color: #2E3440;
+}
+
 pre code {
 	font-size: 16px;
 }
