@@ -10,6 +10,7 @@ const app = express();
 const hbs = expressHandlebars.create({});
 const Schema = mongoose.Schema;
 const port = 3000;
+const whitespaceRE = /^\s*$/;
 
 const renderer = new marked.Renderer();
 
@@ -102,13 +103,24 @@ app.get("/projects/:projectId/teams/:teamId", (req, res) => {
 app.post("/projects/create", (req, res) => {
 	req.body.topics = req.body.topics.split(",").map(str => str.trim());
 
-	Project.create(req.body, (err, project) => {
-		if (err) {
-			res.send("There was an error creating the project.");
-		} else {
-			res.redirect("/projects/" + project._id);
-		}
-	});
+	if (
+		whitespaceRE.test(req.body.title) ||
+		whitespaceRE.test(req.body.author) ||
+		whitespaceRE.test(req.body.description) ||
+		whitespaceRE.test(req.body.image) ||
+		whitespaceRE.test(req.body.content) ||
+		req.body.topics.length === 0
+	) {
+		res.send("Invalid project fields.");
+	} else {
+		Project.create(req.body, (err, project) => {
+			if (err) {
+				res.send("There was an error creating the project.");
+			} else {
+				res.redirect("/projects/" + project._id);
+			}
+		});
+	}
 });
 
 app.post("/projects/:id/teams/create", (req, res) => {
